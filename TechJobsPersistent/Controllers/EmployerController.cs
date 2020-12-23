@@ -109,7 +109,7 @@ namespace TechJobsPersistent.Controllers
 
             Employer employer = context.Employers.Find(id);
 
-            // TODO: need to modify
+            
             /*foreach (int id in Id)
             {
                 ViewBag.employers = context.Employers.Find();
@@ -123,6 +123,16 @@ namespace TechJobsPersistent.Controllers
             .ToList();*/
 
             return View(employer);
+        }
+
+        //trying to populate drop down menu
+        public ActionResult EmployerList()
+        {
+            var employers = context.Employers.ToList();
+
+            
+
+            return View(employers);
         }
     }
 }

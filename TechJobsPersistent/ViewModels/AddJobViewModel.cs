@@ -12,29 +12,34 @@ namespace TechJobsPersistent.ViewModels
     {
         public string JobName { get; set; }
         public int EmployerId { get; set; }
-        public List<SelectListItem> Employers { get; set; }
+        public List<SelectListItem> Employers { get; set; } 
+
+        public List<Skill> Skills { get; set; }
         public Job Job { get; set; }
 
+        public AddJobViewModel()
+        { }
 
-        // TODO: "In AddJob() pass an instance of AddJobViewModel to the view." is that here or somewhere else?
 
-        public AddJobViewModel(Job theJob, List<Job> possibleJobs)
+        public AddJobViewModel(List<Employer> employers, List<Skill> skills)
         {
+            Skills = skills;
+
             Employers = new List<SelectListItem>();
 
-            foreach (var job in possibleJobs)
+            foreach (var employer in employers)
             {
                 Employers.Add(new SelectListItem
                 {
-                    Value = job.EmployerId.ToString(),
-                    Text = job.Name
+                    Value = employer.Id.ToString(),
+                    Text = employer.Name
                 });
+
             }
 
-            Job = theJob;
         }
-        public AddJobViewModel()
-        { }
+        
+
 
     }
 }

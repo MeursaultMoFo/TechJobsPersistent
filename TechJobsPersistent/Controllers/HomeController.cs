@@ -31,12 +31,11 @@ namespace TechJobsPersistent.Controllers
 
         //adding a job
         [HttpGet("/Add")]
-        public IActionResult AddJob(int id)
+        public IActionResult AddJob()
         {
-            Job theJob = context.Jobs.Find(id);
-            List<Job> possibleJobs = context.Jobs.ToList();
-            AddJobViewModel viewModel = new AddJobViewModel(theJob, possibleJobs);
-            return View(viewModel);
+
+            AddJobViewModel addJobViewModel = new AddJobViewModel(context.Employers.ToList(), context.Skills.ToList());
+            return View(addJobViewModel);
         }
 
         //adding a job continued
@@ -64,10 +63,10 @@ namespace TechJobsPersistent.Controllers
                     context.SaveChanges();
                 }
 
-                return Redirect("/Home/Detail/" + jobname);
+                return Redirect("Index");
             }
 
-            return View(addJobViewModel);
+            return View("Add", addJobViewModel);
         }
 
         public IActionResult Detail(int id)

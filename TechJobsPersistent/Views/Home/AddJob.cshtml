@@ -1,26 +1,29 @@
-﻿<h1>Add a Job</h1>
+﻿@model TechJobsPersistent.ViewModels.AddJobViewModel
+
+<h1>Add a Job</h1>
 
 <form asp-controller="Home" asp-action="ProcessAddJobForm" method="post">
     <div class="form-group">
-        <label>Name</label>
+        @*<label>Name</label>
         <input class="form-control" />
-        <span></span>
+        <span></span>*@
+        <label asp-for="JobName">Job Name</label>
+        <input asp-for="JobName" />
+        <span asp-validation-for="JobName"></span>
     </div>
 
     <!--additions begin-->
-    @*drop down menu
-        link to add an employer*@
+    
     <div class="form-group">
-        <label>Employer</label>
+        <label asp-for="Employers">Employer</label>
         <a asp-controller="Employer" asp-action="Add">Add Employer</a>
         <p>
             <label for="employer-select">Or choose an employer:</label>
-
-            <select name="employers" id="employer-select">
-                <option value="">--Please choose an option--</option>
-                <option value="employer1">Employer1</option>
-                <option value="employer2">Employer2</option>
+            <!-- TODO: need to modify drop down menu to populate from employers table-->
+            <select asp-for="EmployerId" asp-items="Model.Employers">
+                
             </select>
+            <span asp-validation-for="EmployerId"></span>
         </p>
 
 
