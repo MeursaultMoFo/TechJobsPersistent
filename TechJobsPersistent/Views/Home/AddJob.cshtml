@@ -7,6 +7,30 @@
         <span></span>
     </div>
 
+    <!--additions begin-->
+    @*drop down menu
+        link to add an employer*@
+    <div class="form-group">
+        <label>Employer</label>
+        <a asp-controller="Employer" asp-action="Add">Add Employer</a>
+        <p>
+            <label for="employer-select">Or choose an employer:</label>
+
+            <select name="employers" id="employer-select">
+                <option value="">--Please choose an option--</option>
+                <option value="employer1">Employer1</option>
+                <option value="employer2">Employer2</option>
+            </select>
+        </p>
+
+
+        <span></span>
+    </div>
+
+
+
+
+    <!--additions end-->
     <input type="submit" value="Add Job" />
 </form>
 

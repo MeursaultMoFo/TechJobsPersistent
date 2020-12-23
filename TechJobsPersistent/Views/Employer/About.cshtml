@@ -1,6 +1,10 @@
-﻿<h1>Employer: Name</h1>
+﻿@model TechJobsPersistent.Models.Employer;
+
+<h1>Employer: @Model.Name</h1>
+
+<!-- TODO: may need to revise names see Views in assignment -->
 
 <div>
-    <p>Name: name</p>
-    <p>Location: location</p>
+  @*  <p>Name: name</p>*@
+    <p>Location: @Model.Location</p>
 </div>
