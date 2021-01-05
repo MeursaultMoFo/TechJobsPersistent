@@ -5,29 +5,40 @@
 <form asp-controller="Home" asp-action="ProcessAddJobForm" method="post">
     <div class="form-group">
         @*<label>Name</label>
-        <input class="form-control" />
-        <span></span>*@
+            <input class="form-control" />
+            <span></span>*@
         <label asp-for="JobName">Job Name</label>
         <input asp-for="JobName" />
         <span asp-validation-for="JobName"></span>
     </div>
 
     <!--additions begin-->
-    
+
     <div class="form-group">
-        <label asp-for="Employers">Employer</label>
-        <a asp-controller="Employer" asp-action="Add">Add Employer</a>
+        <label asp-for="Employers">Employer: </label>
         <p>
+            <a asp-controller="Employer" asp-action="Add">Add Employer</a>
             <label for="employer-select">Or choose an employer:</label>
-            <!-- TODO: need to modify drop down menu to populate from employers table-->
             <select asp-for="EmployerId" asp-items="Model.Employers">
-                
             </select>
-            <span asp-validation-for="EmployerId"></span>
+            
         </p>
+    </div>
 
-
-        <span></span>
+    <div class="form-group">
+        <label asp-for="Skills">Skills</label>
+        <a asp-controller="Skill" asp-action="Add">Add Skills</a>
+        <!-- TODO: need to modify to loop and add skills-->
+        <p>
+            <label for="skill-select">Or choose some skills:</label>
+            @foreach (var skill in @Model.Skills)
+            {
+                <label asp-for="@skill.Id">@skill.Name</label>
+                <input type="checkbox" name="selectedSkills" value="@skill.Id" />
+                
+            }
+         </p>
+        
     </div>
 
 
